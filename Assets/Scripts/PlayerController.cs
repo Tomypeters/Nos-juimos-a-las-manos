@@ -10,7 +10,7 @@ public class PlayerController : Entity
     private List<Entity> enemies;
     
     // Awake
-    protected void Start()
+    protected override void Start()
     {
         base.Start();
         attackStateMachine = new BaseStateMachine();
@@ -21,17 +21,13 @@ public class PlayerController : Entity
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         ProcessInputs();
         attackStateMachine.Update();
     }
 
-    private void FixedUpdate()
-    {
-        // Physics calculations
-        Move();
-    }
 
     private void ProcessInputs()
     {
@@ -58,27 +54,31 @@ public class PlayerController : Entity
 
         float targetSwitch = Input.GetAxis("Target");
         //bool switch1 = Input.GetButtonDown("joystick button 5");
-        if (Input.anyKeyDown && (targetSwitch == 1 || targetSwitch == -1) && target != null && enemies.Count > 1)
+        if (Input.anyKeyDown && (targetSwitch == 1 || targetSwitch == -1) )
         {
-            Debug.Log("SWITCH TARGET!");
-
-            Vector2 targetVector = -(transform.position - target.transform.position);
-
-            enemies.Sort(delegate (Entity a, Entity b)
+            if (target != null && enemies.Count > 1)
             {
-                return ((int)Vector2.SignedAngle(targetVector, (transform.position - a.transform.position)) + 180) -
-                    ((int)Vector2.SignedAngle(targetVector, (transform.position - b.transform.position)) + 180);
-                ;
-            });
+                Vector2 targetVector = -(transform.position - target.transform.position);
 
-            if (targetSwitch == 1)
-            {
-                enemies.Reverse();
-                target = enemies[1];
+                enemies.Sort(delegate (Entity a, Entity b)
+                {
+                    return ((int)Vector2.SignedAngle(targetVector, (transform.position - a.transform.position)) + 180) -
+                        ((int)Vector2.SignedAngle(targetVector, (transform.position - b.transform.position)) + 180);
+                    ;
+                });
+
+                if (targetSwitch == 1)
+                {
+                    enemies.Reverse();
+                    target = enemies[1];
+                }
+                else
+                {
+                    target = enemies[0];
+                }
             }
-            else { 
+            else if (target == null && enemies.Count > 0)
                 target = enemies[0];
-            }
         }
 
 
@@ -101,7 +101,7 @@ public class PlayerController : Entity
             enemies.Remove(collision.GetComponent<Entity>());
     }
 
-    private void Move()
+    protected override void Move()
     {
         rigidbody.velocity = new Vector2(moveDirection.x * moveSpeed,
             moveDirection.y * moveSpeed);
@@ -137,7 +137,7 @@ public class PlayerController : Entity
         hands.GetComponent<CircleCollider2D>().enabled = false;
     }
 
-        private void OnAnimatorMove()
+    private void OnAnimatorMove()
     {
 
     }

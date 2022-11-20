@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour
 {
     // Movement
     public float moveSpeed;
@@ -23,7 +23,7 @@ public class Entity : MonoBehaviour
 
 
     // Start is called before the first frame update
-    protected void Start()
+    protected virtual void Start()
     { 
         rigidbody = GetComponent<Rigidbody2D>();
         audioSystem = GetComponent<AudioSystem>();
@@ -31,10 +31,18 @@ public class Entity : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         
     }
+
+    private void FixedUpdate()
+    {
+        // Physics calculations
+        Move();
+    }
+
+    protected abstract void Move();
 
     public virtual void Attack()
     {
@@ -61,6 +69,6 @@ public class Entity : MonoBehaviour
         audioSystem.PlayHitEnemy();
         health -= damage;
         if (health <= 0)
-            Destroy(this.gameObject, 1);
+            Destroy(this.gameObject);
     }
 }
