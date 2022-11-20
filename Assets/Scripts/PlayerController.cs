@@ -8,7 +8,6 @@ public class PlayerController : Entity
 
     private BaseStateMachine attackStateMachine;
     private List<Entity> enemies;
-    private Entity target;
 
     // Awake
     protected void Start()
@@ -64,13 +63,22 @@ public class PlayerController : Entity
             Debug.Log("SWITCH TARGET!");
 
             Vector2 targetVector = transform.position - target.transform.position;
+
             enemies.Sort(delegate (Entity a, Entity b)
             {
-                return (int)Vector2.Angle(targetVector, (transform.position - a.transform.position)) -
-                    (int)Vector2.Angle(targetVector, (transform.position - b.transform.position));
-               ;
+                return ((int)Vector2.SignedAngle(targetVector, (transform.position - a.transform.position)) + 180) -
+                    ((int)Vector2.SignedAngle(targetVector, (transform.position - b.transform.position)) + 180);
+                ;
             });
-
+            Debug.Log(enemies.Count);
+            Debug.Log("01 " + enemies[0].ToString());
+            Debug.Log(Vector2.SignedAngle(targetVector, (transform.position - enemies[0].transform.position)));
+            Debug.Log("02 " + enemies[1].ToString());
+            Debug.Log(Vector2.SignedAngle(targetVector, (transform.position - enemies[1].transform.position)));
+            Debug.Log("03 " + enemies[2].ToString());
+            Debug.Log(Vector2.SignedAngle(targetVector, (transform.position - enemies[2].transform.position)));
+            Debug.Log("04 " + enemies[3].ToString());
+            Debug.Log(Vector2.SignedAngle(targetVector, (transform.position - enemies[3].transform.position)));
             target = enemies[1];
         }
 
