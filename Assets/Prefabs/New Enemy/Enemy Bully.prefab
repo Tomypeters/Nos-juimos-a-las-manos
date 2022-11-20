@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6381730515850532312}
   - component: {fileID: 971385478872015888}
   - component: {fileID: 1032513041587709528}
+  - component: {fileID: 2341914205821662661}
   m_Layer: 0
   m_Name: Enemy Bully
   m_TagString: Enemy
@@ -263,3 +264,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whoosh: {fileID: 8300000, guid: 5a132bc7b11aeb447bcb16994ec88602, type: 3}
   normalHit: {fileID: 8300000, guid: 993d250eaa16f534bb52fdf3e96a751b, type: 3}
+--- !u!50 &2341914205821662661
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6381730515850532259}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
