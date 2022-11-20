@@ -14,4 +14,10 @@ public class SceneManagement : MonoBehaviour
     {
         ChangeScene("Credits");
     }
+
+    public void TransicionAMenu()
+    {
+        ChangeScene("Menu");
+    }
+
 }
