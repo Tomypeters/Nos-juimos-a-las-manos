@@ -19,7 +19,7 @@ public class Entity : MonoBehaviour
     public float health = 5;
     public float damage = 1;
 
-    protected Entity target;
+    public Entity target;
 
 
     // Start is called before the first frame update
@@ -36,13 +36,13 @@ public class Entity : MonoBehaviour
         
     }
 
-    public void Attack()
+    public virtual void Attack()
     {
         handAnimator.SetTrigger("Attack");
         audioSystem.PlayWhoosh();
     }
 
-    public void FinishAttack()
+    public virtual void FinishAttack()
     {
         rigidbody.AddForce(moveDirection.normalized * 250f);
         if (target != null) {
@@ -58,6 +58,7 @@ public class Entity : MonoBehaviour
 
     public void TakeHit(float damage, Vector2 hitOrigin)
     {
+        audioSystem.PlayHitEnemy();
         health -= damage;
         if (health <= 0)
             Destroy(this.gameObject, 1);

@@ -56,13 +56,13 @@ public class PlayerController : Entity
             attackStateMachine.AttemptTransition("Attack2");
         }
 
-        float switch1 = Input.GetAxis("Target");
+        float targetSwitch = Input.GetAxis("Target");
         //bool switch1 = Input.GetButtonDown("joystick button 5");
-        if (Input.anyKeyDown && switch1 == 1 && target != null && enemies.Count > 1)
+        if (Input.anyKeyDown && (targetSwitch == 1 || targetSwitch == -1) && target != null && enemies.Count > 1)
         {
             Debug.Log("SWITCH TARGET!");
 
-            Vector2 targetVector = transform.position - target.transform.position;
+            Vector2 targetVector = -(transform.position - target.transform.position);
 
             enemies.Sort(delegate (Entity a, Entity b)
             {
@@ -70,16 +70,15 @@ public class PlayerController : Entity
                     ((int)Vector2.SignedAngle(targetVector, (transform.position - b.transform.position)) + 180);
                 ;
             });
-            Debug.Log(enemies.Count);
-            Debug.Log("01 " + enemies[0].ToString());
-            Debug.Log(Vector2.SignedAngle(targetVector, (transform.position - enemies[0].transform.position)));
-            Debug.Log("02 " + enemies[1].ToString());
-            Debug.Log(Vector2.SignedAngle(targetVector, (transform.position - enemies[1].transform.position)));
-            Debug.Log("03 " + enemies[2].ToString());
-            Debug.Log(Vector2.SignedAngle(targetVector, (transform.position - enemies[2].transform.position)));
-            Debug.Log("04 " + enemies[3].ToString());
-            Debug.Log(Vector2.SignedAngle(targetVector, (transform.position - enemies[3].transform.position)));
-            target = enemies[1];
+
+            if (targetSwitch == 1)
+            {
+                enemies.Reverse();
+                target = enemies[1];
+            }
+            else { 
+                target = enemies[0];
+            }
         }
 
 
@@ -119,13 +118,26 @@ public class PlayerController : Entity
             hands.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
-        animator.SetFloat("Horizontal", hands.transform.right.x);
-        Debug.Log(hands.transform.right.x);
-        animator.SetFloat("Vertical", hands.transform.right.y);
-        Debug.Log(hands.transform.right.y);
+        if (animator != null)
+        {
+            animator.SetFloat("Horizontal", hands.transform.right.x);
+            animator.SetFloat("Vertical", hands.transform.right.y);
+        }
     }
 
-    private void OnAnimatorMove()
+    public override void Attack()
+    {
+        base.Attack();
+        hands.GetComponent<CircleCollider2D>().enabled = true;
+    }
+
+    public override void FinishAttack()
+    {
+        base.FinishAttack();
+        hands.GetComponent<CircleCollider2D>().enabled = false;
+    }
+
+        private void OnAnimatorMove()
     {
 
     }

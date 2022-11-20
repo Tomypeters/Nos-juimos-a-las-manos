@@ -12,7 +12,6 @@ public class Hands : MonoBehaviour
     void Start()
     {
         owner = transform.parent.GetComponent<Entity>();
-        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,11 +22,9 @@ public class Hands : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    private void OnAnimatorMove()
-    {
-        
+        if (collision.tag == "Enemy")
+        {
+            owner.target = collision.GetComponent<Entity>();
+        }
     }
 }
