@@ -17,6 +17,7 @@ public class RecoveryState : BaseState
 
     public override void Enter(BaseStateMachine machine)
     {
+        entity.FinishAttack();
         timer = recoveryTime;
     }
 
