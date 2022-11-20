@@ -291,6 +291,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Bully
       objectReference: {fileID: 0}
+    - target: {fileID: 6381730515850532261, guid: 0e45badbc052ea349bc80b11f0aa69cf, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381730515850532261, guid: 0e45badbc052ea349bc80b11f0aa69cf, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381730515850532261, guid: 0e45badbc052ea349bc80b11f0aa69cf, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6381730515850532262, guid: 0e45badbc052ea349bc80b11f0aa69cf, type: 3}
       propertyPath: m_RootOrder
       value: 2
