@@ -8,6 +8,7 @@ public class Entity : MonoBehaviour
 
     protected AudioSystem audioSystem;
     protected Rigidbody2D rigidbody;
+    protected Animator animator;
 
     protected Vector2 moveDirection = Vector2.right;
     protected Vector2 facingDirection = Vector2.right;
@@ -23,9 +24,10 @@ public class Entity : MonoBehaviour
 
     // Start is called before the first frame update
     protected void Start()
-    {
+    { 
         rigidbody = GetComponent<Rigidbody2D>();
         audioSystem = GetComponent<AudioSystem>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame

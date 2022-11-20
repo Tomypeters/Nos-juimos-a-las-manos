@@ -8,7 +8,7 @@ public class PlayerController : Entity
 
     private BaseStateMachine attackStateMachine;
     private List<Entity> enemies;
-
+    
     // Awake
     protected void Start()
     {
@@ -118,6 +118,11 @@ public class PlayerController : Entity
             float angle = Mathf.Atan2(angleVector.y, angleVector.x) * Mathf.Rad2Deg;
             hands.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
+
+        animator.SetFloat("Horizontal", hands.transform.right.x);
+        Debug.Log(hands.transform.right.x);
+        animator.SetFloat("Vertical", hands.transform.right.y);
+        Debug.Log(hands.transform.right.y);
     }
 
     private void OnAnimatorMove()
