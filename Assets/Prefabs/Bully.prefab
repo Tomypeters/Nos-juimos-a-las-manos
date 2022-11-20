@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 3522112532647236883}
   - component: {fileID: 6408915300034614970}
   - component: {fileID: 5036665184948894047}
+  - component: {fileID: 2399986368720092803}
   m_Layer: 0
   m_Name: Bully
   m_TagString: Untagged
@@ -379,6 +380,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   handAnimator: {fileID: 3522112531155041471}
+  maxHealth: 5
+  health: 5
+  damage: 1
+  target: {fileID: 0}
   hands: {fileID: 3522112531155041457}
 --- !u!58 &3522112532647236883
 CircleCollider2D:
@@ -506,3 +511,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whoosh: {fileID: 8300000, guid: 5a132bc7b11aeb447bcb16994ec88602, type: 3}
   normalHit: {fileID: 8300000, guid: e467a09fd9c2acd45999f0af535d01b5, type: 3}
+--- !u!114 &2399986368720092803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3522112532647236872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31f88291d55faa41bd3e7b609636699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  handAnimator: {fileID: 0}
+  maxHealth: 5
+  health: 5
+  damage: 1
+  target: {fileID: 3522112532647236887}

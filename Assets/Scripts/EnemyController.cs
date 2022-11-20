@@ -10,7 +10,7 @@ public class EnemyController : Entity
     {
         base.Update();
 
-        Vector3 targetDir = (transform.position - target.transform.position);
+        Vector3 targetDir = (target.transform.position - transform.position);
 
         if (targetDir.magnitude >= 1.5)
         {

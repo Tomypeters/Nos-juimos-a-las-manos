@@ -124,10 +124,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6381730515850532259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fb91433a1371a6469553c4737a3bf83, type: 3}
+  m_Script: {fileID: 11500000, guid: c31f88291d55faa41bd3e7b609636699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
+  moveSpeed: 2
   handAnimator: {fileID: 0}
   maxHealth: 5
   health: 5

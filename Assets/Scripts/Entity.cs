@@ -36,7 +36,7 @@ public abstract class Entity : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         // Physics calculations
         Move();
