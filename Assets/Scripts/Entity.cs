@@ -15,9 +15,13 @@ public abstract class Entity : MonoBehaviour
 
     // Combat vars
     public Animator handAnimator;
+    public GameObject hands;
+
+    protected BaseStateMachine attackStateMachine;
     public float maxHealth = 5;
     public float health = 5;
     public float damage = 1;
+    public float attackRange = 1.5f;
 
     public Entity target;
 
@@ -28,12 +32,17 @@ public abstract class Entity : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         audioSystem = GetComponent<AudioSystem>();
         animator = GetComponent<Animator>();
+
+        attackStateMachine = new BaseStateMachine();
+        attackStateMachine.Awake();
+        attackStateMachine.CurrentState = new IdleState(this);
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        
+        attackStateMachine.Update();
+
     }
 
     void FixedUpdate()
@@ -52,10 +61,9 @@ public abstract class Entity : MonoBehaviour
 
     public virtual void FinishAttack()
     {
-        rigidbody.AddForce(moveDirection.normalized * 250f);
+        //rigidbody.AddForce(moveDirection.normalized * 250f);
         if (target != null) {
-            Debug.Log(target);
-            if (Vector2.Distance(transform.position, target.transform.position) < 1.3)
+            if (Vector2.Distance(transform.position, target.transform.position) <= attackRange)
             {
                 target.TakeHit(damage, transform.position);
             }

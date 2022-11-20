@@ -178,6 +178,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7756079473569299652}
   - component: {fileID: 7756079473569299659}
+  - component: {fileID: 9158896132917868270}
+  - component: {fileID: 5431403156187447852}
   m_Layer: 0
   m_Name: Hand Holder
   m_TagString: Untagged
@@ -221,6 +223,35 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9158896132917868270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7756079473569299653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c046f5d9603639d459d5b4323b436342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Enemy
+--- !u!58 &5431403156187447852
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7756079473569299653}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 6.8646297, y: -0.29491544}
+  serializedVersion: 2
+  m_Radius: 1.533776
 --- !u!1 &7756079474761438588
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +379,10 @@ MonoBehaviour:
   moveSpeed: 2
   handAnimator: {fileID: 7756079473569299659}
   hands: {fileID: 7756079473569299653}
+  maxHealth: 5
+  health: 5
+  damage: 1
+  target: {fileID: 0}
 --- !u!58 &7756079474761438567
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -9,6 +9,14 @@ public class EnemyController : Entity
     private float collisionTimer = 0;
     private Quaternion modifier = Quaternion.AngleAxis(0, Vector3.up);
 
+
+    // Awake
+    protected override void Start()
+    {
+        base.Start();
+
+    }
+
     // Update is called once per frame
     protected override void Update()
     {
@@ -22,7 +30,7 @@ public class EnemyController : Entity
             animator.SetFloat("Vertical", targetDir.normalized.y);
         }
 
-        if (targetDir.magnitude >= 1.5)
+        if (targetDir.magnitude >= attackRange)
         {
             if (collided)
             {
@@ -32,6 +40,10 @@ public class EnemyController : Entity
 
             transform.position += targetDir.normalized * moveSpeed * Time.deltaTime;
         }
+        else
+        {
+            attackStateMachine.AttemptTransition("Attack");
+        }
 
         if (collisionTimer > 0)
             collisionTimer -= Time.deltaTime;
@@ -39,12 +51,13 @@ public class EnemyController : Entity
         if (collisionTimer <= 0)
             collided = false;
 
-
     }
 
     protected override void Move()
     {
-        // nothing
+        Vector2 angleVector = target.transform.position - transform.position;
+        float angle = Mathf.Atan2(angleVector.y, angleVector.x) * Mathf.Rad2Deg;
+        hands.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
 

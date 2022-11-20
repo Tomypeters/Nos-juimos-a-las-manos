@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class PlayerController : Entity
 {
-    public GameObject hands;
-
-    private BaseStateMachine attackStateMachine;
     private List<Entity> enemies;
     
     // Awake
     protected override void Start()
     {
         base.Start();
-        attackStateMachine = new BaseStateMachine();
-        attackStateMachine.Awake();
-        attackStateMachine.CurrentState = new IdleState(this);
 
         enemies = new List<Entity>();
     }
@@ -25,7 +19,6 @@ public class PlayerController : Entity
     {
         base.Update();
         ProcessInputs();
-        attackStateMachine.Update();
     }
 
 
@@ -42,7 +35,6 @@ public class PlayerController : Entity
         float attack1 = Input.GetAxis("Fire1");
         if (attack1 == 1)
         {
-            Debug.Log("ATACK!");
             attackStateMachine.AttemptTransition("Attack");
         }
         float attack2 = Input.GetAxis("Fire2");
