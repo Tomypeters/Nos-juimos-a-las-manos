@@ -41,10 +41,10 @@ public class EnemyController : Entity
 
             transform.position += targetDir.normalized * moveSpeed * Time.deltaTime;
         }
-        //else if (attackStateMachine.CurrentState.stateId == "Idle")
-        //{
-        //    // attackStateMachine.AttemptTransition("Attack");
-        //}
+        else if (attackStateMachine.CurrentState == attackStateMachine.idleState)
+        {
+            attackStateMachine.ChangeState(attackStateMachine.thinkingState);
+        }
 
         if (collisionTimer > 0)
             collisionTimer -= Time.deltaTime;
