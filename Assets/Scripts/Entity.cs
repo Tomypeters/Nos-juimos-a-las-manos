@@ -5,6 +5,7 @@ public abstract class Entity : MonoBehaviour
 {
     // Movement
     public float moveSpeed;
+    public GameObject bloodParticle;
 
     protected AudioSystem audioSystem;
     protected Rigidbody2D rigidbody;

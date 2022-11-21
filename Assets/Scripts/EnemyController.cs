@@ -88,10 +88,11 @@ public class EnemyController : Entity
 
     public override void TakeHit(float damage, Transform hitOrigin)
     {
-        base.TakeHit(damage, hitOrigin);
-
         transform.position += (transform.position - hitOrigin.position).normalized * 0.5f;
-
+        bloodParticle.transform.LookAt(-hitOrigin.position);
+        bloodParticle.GetComponent<ParticleSystem>().Play();
+        audioSystem.PlayTakeDamage();
+        base.TakeHit(damage, hitOrigin);
     }
 
     public void Select()
