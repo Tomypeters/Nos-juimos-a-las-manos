@@ -128,7 +128,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 233952359029998985, guid: e63b18634f9f69948b3ccfd316afc907, type: 3}
   m_PrefabInstance: {fileID: 2238569292424053422}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1681567660}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddcc76c04e82d8843aea610ffd56b44c, type: 3}
@@ -170,7 +170,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -218,6 +218,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1681567660 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 233952359029998998, guid: e63b18634f9f69948b3ccfd316afc907, type: 3}
+  m_PrefabInstance: {fileID: 2238569292424053422}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1681567668
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681567660}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.1239959, y: -2.9497247}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10, y: 11}
+    newSize: {x: 8.4, y: 8.59}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.642825, y: 4.6667747}
+  m_EdgeRadius: 0
+--- !u!114 &1681567669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681567660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ec02566ea55dc4d9e9aaaf1bdbebbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 519420032}
+  shakeDuration: 0
+  shakeAmount: 0.3
+  decreaseFactor: 5
 --- !u!1001 &1734659910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -364,8 +411,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 233952359029998985, guid: e63b18634f9f69948b3ccfd316afc907, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 233952359029998985, guid: e63b18634f9f69948b3ccfd316afc907, type: 3}
       propertyPath: maxDash
-      value: 0.5
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 233952359029998985, guid: e63b18634f9f69948b3ccfd316afc907, type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 233952359029998985, guid: e63b18634f9f69948b3ccfd316afc907, type: 3}
+      propertyPath: moveSpeed
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 233952359029998985, guid: e63b18634f9f69948b3ccfd316afc907, type: 3}
       propertyPath: attackRange
@@ -495,6 +554,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8519667609695578561, guid: e63b18634f9f69948b3ccfd316afc907, type: 3}
+      propertyPath: heavyWhoosh
+      value: 
+      objectReference: {fileID: 8300000, guid: e1e6534fb5aa4b34d91fa5a3718f33e3, type: 3}
     - target: {fileID: 9083608575235722942, guid: e63b18634f9f69948b3ccfd316afc907, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.37
@@ -512,6 +575,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4128155348996323524, guid: 0e45badbc052ea349bc80b11f0aa69cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6381730515850532259, guid: 0e45badbc052ea349bc80b11f0aa69cf, type: 3}
       propertyPath: m_Name
       value: Enemy Bully

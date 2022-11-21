@@ -29,10 +29,13 @@ public class EnemyController : Entity
 
         Vector3 targetDir = (target.transform.position - transform.position);
 
-        if (animator != null)
+        if (headAnimator != null && bodyAnimator != null)
         {
-            animator.SetFloat("Horizontal", targetDir.normalized.x);
-            animator.SetFloat("Vertical", targetDir.normalized.y);
+            headAnimator.SetFloat("Horizontal", targetDir.normalized.x);
+            headAnimator.SetFloat("Vertical", targetDir.normalized.y);
+
+            bodyAnimator.SetFloat("Horizontal", targetDir.normalized.x);
+            bodyAnimator.SetFloat("Vertical", targetDir.normalized.y);
         }
 
         if (targetDir.magnitude >= attackRange)

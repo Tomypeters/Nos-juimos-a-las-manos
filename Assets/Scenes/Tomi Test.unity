@@ -440,7 +440,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863217880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1.0000001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -498,7 +498,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &863217883
 Animator:
   serializedVersion: 4
@@ -5415,7 +5415,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &1475897695
 Animator:
   serializedVersion: 4
@@ -5461,7 +5461,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6427798695061528139}
   m_LocalRotation: {x: 0, y: 0, z: 0.021465935, w: 0.99976957}
-  m_LocalPosition: {x: -0.03, y: -1.63, z: 0}
+  m_LocalPosition: {x: -0.06, y: -0.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5476,14 +5476,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763838866472463696}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.9998187, w: -0.019042991}
   m_LocalPosition: {x: 2.49, y: 1.1, z: 0}
   m_LocalScale: {x: 2.434, y: 2.175, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6689738354667460296}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 182.182}
 --- !u!95 &911646682030268109
 Animator:
   serializedVersion: 4
@@ -5594,7 +5594,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -10348803, guid: af64fa7d8da2aea4d982b0771bf9022a, type: 3}
   m_Color: {r: 0.990566, g: 0.62985045, b: 0.62985045, a: 1}
   m_FlipX: 0
@@ -5846,6 +5846,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
   bloodParticle: {fileID: 0}
+  headAnimator: {fileID: 863217883}
+  bodyAnimator: {fileID: 1475897695}
   handAnimator: {fileID: 1092902849388960523}
   hands: {fileID: 6427798695061528139}
   maxHealth: 5
@@ -5928,7 +5930,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 808127985, guid: f1f77aa9d20c60d4ba0de5891457adb8, type: 3}
   m_Color: {r: 0.990566, g: 0.8167497, b: 0.8167497, a: 1}
   m_FlipX: 0

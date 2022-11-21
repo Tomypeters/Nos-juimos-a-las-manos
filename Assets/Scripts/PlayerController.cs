@@ -125,7 +125,9 @@ public class PlayerController : Entity
 
             rigidbody.velocity = new Vector2(moveDirection.x, moveDirection.y).normalized * moveSpeed;
 
-            animator.SetFloat("Velocity", rigidbody.velocity.magnitude);
+            headAnimator.SetFloat("Velocity", rigidbody.velocity.magnitude);
+            bodyAnimator.SetFloat("Velocity", rigidbody.velocity.magnitude);
+
         }
 
         if (target == null)
@@ -140,11 +142,10 @@ public class PlayerController : Entity
             hands.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
-        if (animator != null)
-        {
-            animator.SetFloat("Horizontal", hands.transform.right.x);
-            animator.SetFloat("Vertical", hands.transform.right.y);
-        }
+        headAnimator.SetFloat("Horizontal", hands.transform.right.x);
+        headAnimator.SetFloat("Vertical", hands.transform.right.y);
+        bodyAnimator.SetFloat("Horizontal", hands.transform.right.x);
+        bodyAnimator.SetFloat("Vertical", hands.transform.right.y);
     }
 
     public override void Attack()

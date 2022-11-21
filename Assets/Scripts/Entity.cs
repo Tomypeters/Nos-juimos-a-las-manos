@@ -9,7 +9,8 @@ public abstract class Entity : MonoBehaviour
 
     protected AudioSystem audioSystem;
     protected Rigidbody2D rigidbody;
-    protected Animator animator;
+    public Animator headAnimator;
+    public Animator bodyAnimator;
 
     protected Vector2 moveDirection = Vector2.right;
     protected Vector2 facingDirection = Vector2.right;
@@ -33,7 +34,6 @@ public abstract class Entity : MonoBehaviour
     { 
         rigidbody = GetComponent<Rigidbody2D>();
         audioSystem = GetComponent<AudioSystem>();
-        animator = GetComponent<Animator>();
 
         attackStateMachine = new BaseStateMachine();
         attackStateMachine.Init(this);
