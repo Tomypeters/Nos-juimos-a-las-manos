@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whoosh: {fileID: 8300000, guid: 5a132bc7b11aeb447bcb16994ec88602, type: 3}
-  normalHit: {fileID: 8300000, guid: 993d250eaa16f534bb52fdf3e96a751b, type: 3}
+  normalHit: {fileID: 8300000, guid: 85b3ddf4b15da0d4aa1afdfbcc2e7c83, type: 3}
   ouch: {fileID: 0}
   dash: {fileID: 0}
   enemyDeath: {fileID: 8300000, guid: 2690b33f692233042a36fed7c802da96, type: 3}
