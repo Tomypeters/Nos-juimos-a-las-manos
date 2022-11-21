@@ -32,5 +32,6 @@ public class AttackState : BaseState
 
     public override void Exit(BaseStateMachine machine)
     {
+        entity.FinishAttack();
     }
 }

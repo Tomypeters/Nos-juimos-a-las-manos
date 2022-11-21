@@ -25,7 +25,7 @@ public class ThinkingState : BaseState
             if (rand == 1)
                 machine.ChangeState(machine.attackState);
             else if (rand == 2)
-                machine.ChangeState(machine.attackState);
+                machine.ChangeState(machine.heavyAttackState);
             else if (rand == 3)
                 machine.ChangeState(machine.attackState);
         }

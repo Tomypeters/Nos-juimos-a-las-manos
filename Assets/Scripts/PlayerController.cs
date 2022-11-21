@@ -44,18 +44,26 @@ public class PlayerController : Entity
             facingDirection = moveDirection.normalized;
 
         float attack1 = Input.GetAxis("Fire1");
-        if (attack1 == 1 && attackStateMachine.CurrentState == attackStateMachine.idleState)
-        {
-            attackStateMachine.ChangeState(attackStateMachine.attackState);
-        }
         float attack2 = Input.GetAxis("Fire2");
-        if (attack2 == 1 && !dashKeyDown)
+        if (attackStateMachine.CurrentState == attackStateMachine.idleState)
+        {
+            if (attack1 == 1)
+            {
+                attackStateMachine.ChangeState(attackStateMachine.attackState);
+            }
+            else if (attack1 == 2)
+            {
+                attackStateMachine.ChangeState(attackStateMachine.heavyAttackState);
+            }
+        } 
+       
+        float dash = Input.GetAxis("Dash");
+        if (dash == 1 && !dashKeyDown)
         {
             // DASH
             dashKeyDown = true;
-
-            //attackStateMachine.ChangeState(attackStateMachine.heavyAttackState);
         }
+
         else if (dashKeyDown)
             dashKeyDown = false;
 

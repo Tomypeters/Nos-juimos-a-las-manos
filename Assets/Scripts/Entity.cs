@@ -59,6 +59,23 @@ public abstract class Entity : MonoBehaviour
         audioSystem.PlayWhoosh();
     }
 
+    public virtual void HeavyAttack()
+    {
+        handAnimator.SetTrigger("HeavyAttack");
+        audioSystem.PlayWhoosh();
+    }
+    public virtual void FinishHeavyAttack()
+    {
+        if (target != null)
+        {
+            if (Vector2.Distance(transform.position, target.transform.position) <= attackRange + 0.2f)
+            {
+                target.TakeHit(damage * 2.5f, transform);
+            }
+        }
+
+    }
+
     public virtual void FinishAttack()
     {
         //rigidbody.AddForce(moveDirection.normalized * 250f);

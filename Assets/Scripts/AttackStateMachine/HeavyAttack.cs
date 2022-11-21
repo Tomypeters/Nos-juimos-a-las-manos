@@ -17,7 +17,7 @@ public class HeavyAttackState : BaseState
     public override void Enter(BaseStateMachine machine)
     {
         timer = cooldownTime;
-        entity.Attack();
+        entity.HeavyAttack();
     }
 
     public override void Execute(BaseStateMachine machine)
@@ -31,5 +31,6 @@ public class HeavyAttackState : BaseState
 
     public override void Exit(BaseStateMachine machine)
     {
+        entity.FinishHeavyAttack();
     }
 }
