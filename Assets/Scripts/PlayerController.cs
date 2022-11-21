@@ -5,7 +5,15 @@ using UnityEngine;
 public class PlayerController : Entity
 {
     private List<Entity> enemies;
-    
+
+    // Dash habilities
+    public DashState dashState;
+    private float dashTimer;
+    public float maxDash = 0.2f;
+    private bool dashKeyDown = false;
+
+    private Vector2 savedVelocity;
+
     // Awake
     protected override void Start()
     {
@@ -39,11 +47,15 @@ public class PlayerController : Entity
             attackStateMachine.ChangeState(attackStateMachine.attackState);
         }
         float attack2 = Input.GetAxis("Fire2");
-        if (attack2 == 1)
+        if (attack2 == 1 && !dashKeyDown)
         {
             // DASH
-            attackStateMachine.ChangeState(attackStateMachine.heavyAttackState);
+            dashKeyDown = true;
+
+            //attackStateMachine.ChangeState(attackStateMachine.heavyAttackState);
         }
+        else if (dashKeyDown)
+            dashKeyDown = false;
 
         float targetSwitch = Input.GetAxis("Target");
         //bool switch1 = Input.GetButtonDown("joystick button 5");
@@ -95,10 +107,15 @@ public class PlayerController : Entity
 
     protected override void Move()
     {
-        rigidbody.velocity = new Vector2(moveDirection.x * moveSpeed,
-            moveDirection.y * moveSpeed);
+        UpdateDash();
 
-        animator.SetFloat("Velocity", rigidbody.velocity.magnitude);
+        if (dashState != DashState.Dashing)
+        {
+
+            rigidbody.velocity = new Vector2(moveDirection.x, moveDirection.y).normalized * moveSpeed;
+
+            animator.SetFloat("Velocity", rigidbody.velocity.magnitude);
+        }
 
         if (target == null)
         {
@@ -142,5 +159,51 @@ public class PlayerController : Entity
             ((EnemyController)this.target).Deselect();
         base.UpdateTarget(target);
         ((EnemyController)target).Select();
+    }
+
+
+
+
+    void UpdateDash()
+    {
+        switch (dashState)
+        {
+            case DashState.Ready:
+                if (dashKeyDown)
+                {
+                    savedVelocity = rigidbody.velocity;
+                    rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y).normalized * 8f;
+                    dashState = DashState.Dashing;
+                    // Set dash animation
+                    //animator.SetFloat("Velocity", rigidbody.velocity.magnitude);
+                    audioSystem.PlayWhoosh();
+                }
+                break;
+            case DashState.Dashing:
+                dashTimer += Time.deltaTime * 3;
+                if (dashTimer >= maxDash)
+                {
+                    dashTimer = maxDash;
+                    rigidbody.velocity = savedVelocity;
+                    dashState = DashState.Cooldown;
+                }
+                break;
+            case DashState.Cooldown:
+                dashTimer -= Time.deltaTime;
+                if (dashTimer <= 0)
+                {
+                    dashTimer = 0;
+                    dashState = DashState.Ready;
+                }
+                break;
+        }
+        
+    }
+
+    public enum DashState
+    {
+        Ready,
+        Dashing,
+        Cooldown
     }
 }

@@ -124,13 +124,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddcc76c04e82d8843aea610ffd56b44c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 2.5
   handAnimator: {fileID: 3311000117050065789}
+  hands: {fileID: 8930053751327163965}
   maxHealth: 5
   health: 5
   damage: 1
+  attackRange: 1.5
+  attackCooldown: 0.5
   target: {fileID: 0}
-  hands: {fileID: 8930053751327163965}
+  dashState: 0
+  maxDash: 0.2
 --- !u!58 &233952359029998989
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -561,3 +565,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c046f5d9603639d459d5b4323b436342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetTag: Enemy

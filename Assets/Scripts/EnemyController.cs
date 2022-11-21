@@ -8,7 +8,7 @@ public class EnemyController : Entity
     
     private bool collided = false;
     private float collisionTimer = 0;
-    private Quaternion modifier = Quaternion.AngleAxis(0, Vector3.up);
+    private Vector3 collidedDirection = Vector3.up;
 
 
     // Awake
@@ -36,11 +36,15 @@ public class EnemyController : Entity
         {
             if (collided)
             {
-                targetDir = modifier * targetDir;
+                transform.position += collidedDirection.normalized * moveSpeed/3 * Time.deltaTime;
+
+            }
+            else
+            {
+                transform.position += targetDir.normalized * moveSpeed * Time.deltaTime;
             }
 
 
-            transform.position += targetDir.normalized * moveSpeed * Time.deltaTime;
         }
         else if (attackStateMachine.CurrentState == attackStateMachine.idleState)
         {
@@ -68,15 +72,8 @@ public class EnemyController : Entity
         if (collision.collider.tag == "Enemy")
         {
             collided = true;
-
-            float rand = Random.Range(1, 3);
-            if (rand == 1)
-                modifier = Quaternion.AngleAxis(90, Vector3.up);
-            else if (rand == 2)
-                modifier = Quaternion.AngleAxis(-90, Vector3.up);
-            else
-                modifier = Quaternion.AngleAxis(0, Vector3.up);
-            collisionTimer = 1;
+            collidedDirection = transform.position - collision.collider.transform.position;
+            collisionTimer = 0.2f;
         }
     }
 
