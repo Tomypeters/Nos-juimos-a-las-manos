@@ -424,6 +424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 863217881}
   - component: {fileID: 863217882}
+  - component: {fileID: 863217883}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -440,7 +441,7 @@ Transform:
   m_GameObject: {fileID: 863217880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 541757009}
@@ -498,6 +499,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &863217883
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863217880}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a3e2002c2d136dd4789c7a840dde1160, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &869575590
 GameObject:
   m_ObjectHideFlags: 0
@@ -5320,6 +5341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1475897693}
   - component: {fileID: 1475897694}
+  - component: {fileID: 1475897695}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -5336,7 +5358,7 @@ Transform:
   m_GameObject: {fileID: 1475897692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 541757009}
@@ -5394,6 +5416,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1475897695
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475897692}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 53c958b050d97454eb4df3dc161d95e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1806885220 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6480799928809377490, guid: cd7295c1ee3b9ee4e9416f3ea2a12597, type: 3}
@@ -5803,6 +5845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
+  bloodParticle: {fileID: 0}
   handAnimator: {fileID: 1092902849388960523}
   hands: {fileID: 6427798695061528139}
   maxHealth: 5
