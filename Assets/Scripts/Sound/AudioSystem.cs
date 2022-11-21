@@ -9,6 +9,7 @@ public class AudioSystem : MonoBehaviour
     public AudioClip normalHit;
     public AudioClip ouch;
     public AudioClip dash;
+    public AudioClip enemyDeath;
 
     void Start()
     {
@@ -47,4 +48,9 @@ public class AudioSystem : MonoBehaviour
     }
 
 
+    public void PlayEnemyDeath()
+    {
+        if (enemyDeath != null) audioSource.PlayOneShot(enemyDeath);
+
+    }
 }
