@@ -50,7 +50,6 @@ public class PlayerController : Entity
             
             if (attack2 == 1)
             {
-                Debug.Log("HEAVY ATTACK");
                 attackStateMachine.ChangeState(attackStateMachine.heavyAttackState);
             }
             else if (attack1 == 1)
@@ -162,15 +161,15 @@ public class PlayerController : Entity
 
     public override void TakeHit(float damage, Transform hitOrigin)
     {
-        base.TakeHit(damage, hitOrigin);
         screenShake.shakeDuration = 0.1f;
+        audioSystem.PlayTakeDamage();
+        base.TakeHit(damage, hitOrigin);
     }
 
     private void OnAnimatorMove()
     {
 
     }
-
     public override void UpdateTarget(Entity target)
     {
         if (this.target != null)
@@ -192,7 +191,7 @@ public class PlayerController : Entity
                     dashState = DashState.Dashing;
                     // Set dash animation
                     //animator.SetFloat("Velocity", rigidbody.velocity.magnitude);
-                    audioSystem.PlayWhoosh();
+                    audioSystem.PlayDash();
                 }
                 break;
             case DashState.Dashing:

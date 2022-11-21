@@ -62,7 +62,7 @@ public abstract class Entity : MonoBehaviour
     public virtual void HeavyAttack()
     {
         handAnimator.SetTrigger("HeavyAttack");
-        audioSystem.PlayWhoosh();
+        audioSystem.PlayHeavyWhoosh();
     }
     public virtual void FinishHeavyAttack()
     {
@@ -94,7 +94,10 @@ public abstract class Entity : MonoBehaviour
         audioSystem.PlayHitEnemy();
         health -= damage;
         if (health <= 0)
+        {
+            audioSystem.PlayEnemyDeath();
             Destroy(this.gameObject);
+        }
     }
 
     public virtual void UpdateTarget(Entity target)

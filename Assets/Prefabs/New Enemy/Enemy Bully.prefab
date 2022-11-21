@@ -692,6 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whoosh: {fileID: 8300000, guid: 5a132bc7b11aeb447bcb16994ec88602, type: 3}
+  heavyWhoosh: {fileID: 8300000, guid: e1e6534fb5aa4b34d91fa5a3718f33e3, type: 3}
   normalHit: {fileID: 8300000, guid: 85b3ddf4b15da0d4aa1afdfbcc2e7c83, type: 3}
   ouch: {fileID: 0}
   dash: {fileID: 0}

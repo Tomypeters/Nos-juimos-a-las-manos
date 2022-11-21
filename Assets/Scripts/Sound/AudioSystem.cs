@@ -6,6 +6,7 @@ public class AudioSystem : MonoBehaviour
 {
     AudioSource audioSource;
     public AudioClip whoosh;
+    public AudioClip heavyWhoosh;
     public AudioClip normalHit;
     public AudioClip ouch;
     public AudioClip dash;
@@ -19,6 +20,11 @@ public class AudioSystem : MonoBehaviour
     public void PlayWhoosh() 
     {
         if (whoosh != null) audioSource.PlayOneShot(whoosh);
+    }
+
+    public void PlayHeavyWhoosh()
+    {
+        if (heavyWhoosh != null) audioSource.PlayOneShot(heavyWhoosh);
     }
 
     public void PlayHitEnemy() 
