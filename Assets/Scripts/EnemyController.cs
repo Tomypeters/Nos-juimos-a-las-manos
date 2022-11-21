@@ -77,7 +77,6 @@ public class EnemyController : Entity
 
             if (distanceToTarget > otherDistanceToTarget)
             {
-
                 collided = true;
                 collidedDirection = transform.position - collision.collider.transform.position;
                 collisionTimer = 1f;

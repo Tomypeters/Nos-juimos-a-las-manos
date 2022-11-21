@@ -263,6 +263,7 @@ MonoBehaviour:
   normalHit: {fileID: 8300000, guid: e467a09fd9c2acd45999f0af535d01b5, type: 3}
   ouch: {fileID: 8300000, guid: 0184fffd5181a854f964c37d3c39f080, type: 3}
   dash: {fileID: 8300000, guid: 185ef68cb05836941939a0cc8cc3eccd, type: 3}
+  enemyDeath: {fileID: 0}
 --- !u!95 &3350429197075957435
 Animator:
   serializedVersion: 4
@@ -529,7 +530,7 @@ Animator:
   m_GameObject: {fileID: 8930053751327163965}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b22287ea89beac64897b2a0332e22071, type: 2}
+  m_Controller: {fileID: 9100000, guid: 88c143d7729bf5a4fbf649be1ff5cb95, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
