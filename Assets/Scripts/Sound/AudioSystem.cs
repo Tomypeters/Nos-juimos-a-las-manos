@@ -7,6 +7,8 @@ public class AudioSystem : MonoBehaviour
     AudioSource audioSource;
     public AudioClip whoosh;
     public AudioClip normalHit;
+    public AudioClip ouch;
+    public AudioClip dash;
 
     void Start()
     {
@@ -25,7 +27,7 @@ public class AudioSystem : MonoBehaviour
 
     public void PlayTakeDamage() 
     { 
-        // sonido de me pegaron.
+        if(ouch != null) audioSource.PlayOneShot(ouch);
     }
 
     public void PlayStunned()
@@ -36,6 +38,12 @@ public class AudioSystem : MonoBehaviour
     public void PlayBlocked() 
     { 
         //sonido de blockie.
+    }
+
+    public void PlayDash() 
+    { 
+        if(dash != null) audioSource.PlayOneShot(dash);
+
     }
 
 
