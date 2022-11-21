@@ -47,13 +47,15 @@ public class PlayerController : Entity
         float attack2 = Input.GetAxis("Fire2");
         if (attackStateMachine.CurrentState == attackStateMachine.idleState)
         {
-            if (attack1 == 1)
+            
+            if (attack2 == 1)
+            {
+                Debug.Log("HEAVY ATTACK");
+                attackStateMachine.ChangeState(attackStateMachine.heavyAttackState);
+            }
+            else if (attack1 == 1)
             {
                 attackStateMachine.ChangeState(attackStateMachine.attackState);
-            }
-            else if (attack1 == 2)
-            {
-                attackStateMachine.ChangeState(attackStateMachine.heavyAttackState);
             }
         } 
        
