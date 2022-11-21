@@ -229,6 +229,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Bully (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6381730515850532259, guid: 0e45badbc052ea349bc80b11f0aa69cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6381730515850532262, guid: 0e45badbc052ea349bc80b11f0aa69cf, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -290,6 +294,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Bully (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6381730515850532259, guid: 0e45badbc052ea349bc80b11f0aa69cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6381730515850532262, guid: 0e45badbc052ea349bc80b11f0aa69cf, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -347,6 +355,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 233952359029998985, guid: e63b18634f9f69948b3ccfd316afc907, type: 3}
+      propertyPath: attackCooldown
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 233952359029998986, guid: e63b18634f9f69948b3ccfd316afc907, type: 3}
       propertyPath: m_RootOrder
       value: 1

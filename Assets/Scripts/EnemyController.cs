@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyController : Entity
 {
-
+    public SpriteRenderer selectedSprite;
+    
     private bool collided = false;
     private float collisionTimer = 0;
     private Quaternion modifier = Quaternion.AngleAxis(0, Vector3.up);
@@ -78,4 +79,24 @@ public class EnemyController : Entity
             collisionTimer = 1;
         }
     }
+
+
+    public override void TakeHit(float damage, Transform hitOrigin)
+    {
+        base.TakeHit(damage, hitOrigin);
+
+        transform.position += (transform.position - hitOrigin.position).normalized * 0.5f;
+
+    }
+
+    public void Select()
+    {
+        selectedSprite.enabled = true;
+    }
+    public void Deselect()
+    {
+        selectedSprite.enabled = false;
+    }
+
+
 }

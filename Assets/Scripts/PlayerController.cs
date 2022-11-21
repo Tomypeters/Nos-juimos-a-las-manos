@@ -63,15 +63,14 @@ public class PlayerController : Entity
                 if (targetSwitch == 1)
                 {
                     enemies.Reverse();
-                    target = enemies[1];
+                    UpdateTarget(enemies[1]);
                 }
                 else
-                {
-                    target = enemies[0];
-                }
+                    UpdateTarget(enemies[0]);
+                
             }
             else if (target == null && enemies.Count > 0)
-                target = enemies[0];
+                UpdateTarget(enemies[0]);
         }
 
 
@@ -83,7 +82,7 @@ public class PlayerController : Entity
         {
             enemies.Add(collision.GetComponent<Entity>());
             if (target == null)
-                target = collision.GetComponent<Entity>();
+                UpdateTarget(collision.GetComponent<Entity>());
         }
             
     }
@@ -135,5 +134,13 @@ public class PlayerController : Entity
     private void OnAnimatorMove()
     {
 
+    }
+
+    public override void UpdateTarget(Entity target)
+    {
+        if (this.target != null)
+            ((EnemyController)this.target).Deselect();
+        base.UpdateTarget(target);
+        ((EnemyController)target).Select();
     }
 }

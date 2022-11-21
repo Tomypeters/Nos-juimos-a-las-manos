@@ -65,18 +65,24 @@ public abstract class Entity : MonoBehaviour
         if (target != null) {
             if (Vector2.Distance(transform.position, target.transform.position) <= attackRange)
             {
-                target.TakeHit(damage, transform.position);
+                target.TakeHit(damage, transform);
             }
         }
         //handAnimator.ResetTrigger("Attack");
     }
 
 
-    public void TakeHit(float damage, Vector2 hitOrigin)
+    public virtual void TakeHit(float damage, Transform hitOrigin)
     {
         audioSystem.PlayHitEnemy();
         health -= damage;
         if (health <= 0)
             Destroy(this.gameObject);
     }
+
+    public virtual void UpdateTarget(Entity target)
+    {
+        this.target = target;
+    }
+
 }

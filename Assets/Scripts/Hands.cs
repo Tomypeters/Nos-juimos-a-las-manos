@@ -25,7 +25,7 @@ public class Hands : MonoBehaviour
     {
         if (collision.tag == targetTag)
         {
-            owner.target = collision.GetComponent<Entity>();
+            owner.UpdateTarget(collision.GetComponent<Entity>());
         }
     }
 }
