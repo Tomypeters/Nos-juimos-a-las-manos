@@ -22,6 +22,7 @@ public abstract class Entity : MonoBehaviour
     public float health = 5;
     public float damage = 1;
     public float attackRange = 1.5f;
+    public float attackCooldown = 0.5f;
 
     public Entity target;
 
@@ -34,8 +35,7 @@ public abstract class Entity : MonoBehaviour
         animator = GetComponent<Animator>();
 
         attackStateMachine = new BaseStateMachine();
-        attackStateMachine.Awake();
-        attackStateMachine.CurrentState = new IdleState(this);
+        attackStateMachine.Init(this);
     }
 
     // Update is called once per frame

@@ -6,12 +6,10 @@ public class RecoveryState : BaseState
 {
 
     public float timer = 0;
-    public float recoveryTime = 0.5f;
+    public float recoveryTime = 0.3f;
 
     public RecoveryState(Entity entity) : base(entity)
     {
-        this.stateId = "Recovery";
-        this.transitions = new List<Transition>();
 
     }
 
@@ -26,7 +24,9 @@ public class RecoveryState : BaseState
         timer -= Time.deltaTime;
 
         if (timer < 0)
-            machine.ChangeState(new IdleState(entity));
+        {
+            machine.ChangeState(machine.idleState);
+        }
     }
 
     public override void Exit(BaseStateMachine machine)

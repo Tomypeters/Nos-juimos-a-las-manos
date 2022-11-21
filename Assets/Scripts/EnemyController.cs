@@ -15,6 +15,7 @@ public class EnemyController : Entity
     {
         base.Start();
 
+
     }
 
     // Update is called once per frame
@@ -40,10 +41,10 @@ public class EnemyController : Entity
 
             transform.position += targetDir.normalized * moveSpeed * Time.deltaTime;
         }
-        else
-        {
-            attackStateMachine.AttemptTransition("Attack");
-        }
+        //else if (attackStateMachine.CurrentState.stateId == "Idle")
+        //{
+        //    // attackStateMachine.AttemptTransition("Attack");
+        //}
 
         if (collisionTimer > 0)
             collisionTimer -= Time.deltaTime;

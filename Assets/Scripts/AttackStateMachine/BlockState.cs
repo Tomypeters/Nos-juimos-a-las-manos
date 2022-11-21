@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : BaseState
+public class BlockState : BaseState
 {
-    public IdleState(Entity entity) : base(entity)
+    private float cooldownTime = 2;
+
+    public BlockState(Entity entity, float cooldownTime) : base(entity)
     {
+        this.cooldownTime = cooldownTime;
     }
 
     public override void Enter(BaseStateMachine machine)

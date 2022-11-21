@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnockedState : MonoBehaviour
+public class KnockedState : BaseState
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public float timer = 0;
+    public float knockedTime = 0.5f;
+
+    public KnockedState(Entity entity, float knockedTime) : base(entity)
     {
-        
+        this.knockedTime = knockedTime;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Enter(BaseStateMachine machine)
     {
-        
+    }
+
+    public override void Execute(BaseStateMachine machine)
+    {
+    }
+
+    public override void Exit(BaseStateMachine machine)
+    {
+
     }
 }

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackState : BaseState
+public class HeavyAttackState : BaseState
 {
 
     private float timer;
-    private float cooldownTime = 1;
+    private float cooldownTime = 2;
 
-    public AttackState(Entity entity, float cooldownTime) : base(entity)
+    public HeavyAttackState(Entity entity, float cooldownTime) : base(entity)
     {
         this.cooldownTime = cooldownTime;
     }
@@ -22,8 +22,7 @@ public class AttackState : BaseState
 
     public override void Execute(BaseStateMachine machine)
     {
-        if (timer < 0)
-        {
+        if (timer < 0) {
             machine.ChangeState(machine.recoveryState);
         }
         else

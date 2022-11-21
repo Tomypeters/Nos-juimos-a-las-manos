@@ -12,6 +12,7 @@ public class PlayerController : Entity
         base.Start();
 
         enemies = new List<Entity>();
+
     }
 
     // Update is called once per frame
@@ -33,15 +34,15 @@ public class PlayerController : Entity
             facingDirection = moveDirection.normalized;
 
         float attack1 = Input.GetAxis("Fire1");
-        if (attack1 == 1)
+        if (attack1 == 1 && attackStateMachine.CurrentState == attackStateMachine.idleState)
         {
-            attackStateMachine.AttemptTransition("Attack");
+            attackStateMachine.ChangeState(attackStateMachine.attackState);
         }
         float attack2 = Input.GetAxis("Fire2");
         if (attack2 == 1)
         {
             // DASH
-            attackStateMachine.AttemptTransition("Attack2");
+            attackStateMachine.ChangeState(attackStateMachine.heavyAttackState);
         }
 
         float targetSwitch = Input.GetAxis("Target");
@@ -97,6 +98,8 @@ public class PlayerController : Entity
     {
         rigidbody.velocity = new Vector2(moveDirection.x * moveSpeed,
             moveDirection.y * moveSpeed);
+
+        animator.SetFloat("Velocity", rigidbody.velocity.magnitude);
 
         if (target == null)
         {
