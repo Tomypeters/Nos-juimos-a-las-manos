@@ -24,6 +24,9 @@ public class EnemyController : Entity
     {
         base.Update();
 
+        if (bloodParticle.activeSelf && !bloodParticle.GetComponent<ParticleSystem>().isEmitting)
+            bloodParticle.SetActive(false);
+
         Vector3 targetDir = (target.transform.position - transform.position);
 
         if (animator != null)
@@ -89,7 +92,8 @@ public class EnemyController : Entity
     public override void TakeHit(float damage, Transform hitOrigin)
     {
         transform.position += (transform.position - hitOrigin.position).normalized * 0.5f;
-        bloodParticle.transform.LookAt(-hitOrigin.position);
+        bloodParticle.transform.rotation = Quaternion.LookRotation(transform.position - hitOrigin.position);
+        bloodParticle.gameObject.SetActive(true);
         bloodParticle.GetComponent<ParticleSystem>().Play();
         audioSystem.PlayTakeDamage();
         base.TakeHit(damage, hitOrigin);
