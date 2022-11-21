@@ -63,7 +63,7 @@ public abstract class Entity : MonoBehaviour
     {
         //rigidbody.AddForce(moveDirection.normalized * 250f);
         if (target != null) {
-            if (Vector2.Distance(transform.position, target.transform.position) <= attackRange)
+            if (Vector2.Distance(transform.position, target.transform.position) <= attackRange + 0.2f)
             {
                 target.TakeHit(damage, transform);
             }

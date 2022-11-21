@@ -71,9 +71,18 @@ public class EnemyController : Entity
     {
         if (collision.collider.tag == "Enemy")
         {
-            collided = true;
-            collidedDirection = transform.position - collision.collider.transform.position;
-            collisionTimer = 0.2f;
+
+            float distanceToTarget = Vector2.Distance(transform.position, target.transform.position);
+            float otherDistanceToTarget = Vector2.Distance(collision.collider.transform.position, target.transform.position);
+
+            if (distanceToTarget > otherDistanceToTarget)
+            {
+
+                collided = true;
+                collidedDirection = transform.position - collision.collider.transform.position;
+                collisionTimer = 1f;
+            }
+
         }
     }
 

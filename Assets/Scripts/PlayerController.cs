@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerController : Entity
 {
+    private ScreenShake screenShake;
     private List<Entity> enemies;
 
     // Dash habilities
     public DashState dashState;
-    private float dashTimer;
     public float maxDash = 0.2f;
+    private float dashTimer;
     private bool dashKeyDown = false;
 
     private Vector2 savedVelocity;
@@ -20,6 +21,7 @@ public class PlayerController : Entity
         base.Start();
 
         enemies = new List<Entity>();
+        screenShake = GetComponent<ScreenShake>();
 
     }
 
@@ -148,6 +150,12 @@ public class PlayerController : Entity
         hands.GetComponent<CircleCollider2D>().enabled = false;
     }
 
+    public override void TakeHit(float damage, Transform hitOrigin)
+    {
+        base.TakeHit(damage, hitOrigin);
+        screenShake.shakeDuration = 0.1f;
+    }
+
     private void OnAnimatorMove()
     {
 
@@ -160,8 +168,6 @@ public class PlayerController : Entity
         base.UpdateTarget(target);
         ((EnemyController)target).Select();
     }
-
-
 
 
     void UpdateDash()

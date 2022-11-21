@@ -21,13 +21,13 @@ public class ThinkingState : BaseState
         thinkTimer -= Time.deltaTime;
         if(thinkTimer < 0)
         {
-            float rand = Random.Range(1, 3);
+            float rand = Random.Range(1, 4);
             if (rand == 1)
                 machine.ChangeState(machine.attackState);
             else if (rand == 2)
-                machine.ChangeState(machine.heavyAttackState);
+                machine.ChangeState(machine.attackState);
             else if (rand == 3)
-                machine.ChangeState(machine.blockState);
+                machine.ChangeState(machine.attackState);
         }
 
 
